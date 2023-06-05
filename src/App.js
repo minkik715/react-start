@@ -1,16 +1,19 @@
 import React, {useState} from 'react';
-
+import "App.css"
 function App() {
-    const [cnt, setCnt] = useState(0);
-    const plusCnt =  () => {setCnt(cnt +1)}
-    const minusCnt =  () => {setCnt(cnt -1)}
 
+    const [fruits, setFruits] = useState(["감자", "고구마", '오이', '가지', "옥수수"]);
     return (
-        <div>
-            {cnt}
-            <button onClick={plusCnt}>+</button>
-            <button onClick={minusCnt} >-</button>
+        <div className="fruits-style">
+            {
+                fruits.map(fruit => {
+                    return <div className="fruit-border">
+                        {fruit}
+                    </div>
+                })
+            }
         </div>
+
     );
 }
 
