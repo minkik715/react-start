@@ -1,47 +1,47 @@
-import React, {useState} from 'react';
-import "App.css"
-import Button from "./component/Button";
-import User from "./component/User";
+import React from 'react';
+import styled from "styled-components";
 
-function App() {
-    const [users, setUsers] = useState([]);
-    const [name, setName] = useState("");
-    const [age, setAge] = useState("");
+const StBox = styled.div`
+  width: 100px;
+  height: 100px;
+  border: 1px solid ${(props) => props.borderColor};
+  margin: 20px;
+  background-color: ${(props) => props.backGrooundColor} ;
+`
+const StContainer = styled.div`
+display: flex`
 
-    const onClickRemoveHandler = (id) => {
-        setUsers(users.filter((u) => {
-            return u.id !== id
-        }))
+const StP = styled.p`
+  color: blue;
+`
+
+const boxColors = ['red', 'blue', 'green']
+
+const getBoxName = (color) => {
+    switch (color) {
+        case "red":
+            return "빨강방스"
+        case "blue":
+            return "파랑박스"
+        case "green":
+            return "초록박스"
     }
-
-    const onClickRegisterHandler = () => {
-        setUsers([...users, {"name": name, "age": age, "id": users.length + 1}])
-        setAge(0)
-        setName("")
-    }
-
-    return (<div>
-            <div>
-                이름 : <input value={name} onChange={event => {
-                setName(event.target.value)
-            }}/>
-                <br/>
-                나이: <input value={age} onChange={event => {
-                setAge(event.target.value)
-            }}
-            />
-                <Button onClickRegisterHandler={onClickRegisterHandler}>추간</Button>
-            </div>
-            <div className="fruits-style">
-                {users.map((user) => {
-                    return <User user={user} removeFunction={onClickRemoveHandler}/>
-                })}
-            </div>
-        </div>
-
-    );
 }
 
 
+function App(p) {
+    return (
+        <StContainer>
+            {
+                boxColors.map((color) =>{
+                    return <StBox borderColor={color} >
+                        {getBoxName(color)}
+                    </StBox>
+                })
+            }
+
+        </StContainer>
+    );
+}
 
 export default App;
