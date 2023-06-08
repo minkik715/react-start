@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-
+import TestPage from "./component/TestPage";
+import GlobalStyle from "./GlobalStyle";
 const StBox = styled.div`
   width: 100px;
   height: 100px;
@@ -31,16 +32,10 @@ const getBoxName = (color) => {
 
 function App(p) {
     return (
-        <StContainer>
-            {
-                boxColors.map((color) =>{
-                    return <StBox borderColor={color} >
-                        {getBoxName(color)}
-                    </StBox>
-                })
-            }
-
-        </StContainer>
+        <div>
+            <GlobalStyle/>
+            <TestPage title={"바보"} content={"멍청이"}/>
+        </div>
     );
 }
 
