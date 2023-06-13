@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 
 //useEffect: 렌더링 될때, 특정한 작업을 수행해야 할 때 설정하는 훅 (컴포넌트가 화면에 보여졌을떄, 사라졌을 때 )
 //의존 배열 -> 해당 배열에 의존할 스테이트를 넣어주면 해당 스테이트가 변할때만 수행됨
@@ -10,9 +10,27 @@ import React from 'react';
 // -> stat는 리렌더링이 꼭 필요한 값을 다룰 때 쓰면 되고
 // -> ref는 렌더링을 발생시키지 않는 값을 저장할 때 사용한다.
 
+const divStyle = {
+    border : "solid red 2px",
+    margin : "10px",
+    padding : '10px',
+}
+
 function App(props) {
+    const [state, setState] = useState(0);
+    const ref = useRef(0);
+
     return (
-        <div></div>
+        <>
+            <div style={divStyle}>
+                state 영역입니다. {state}
+                <button onClick={ () => setState(state +1)}>state up</button>
+            </div>
+            <div style={divStyle}>
+                ref 영역입니다. {ref.current}
+                <button onClick={ () => ref.current = ref.current +1}>state up</button>
+            </div>
+        </>
     );
 }
 
