@@ -1,27 +1,35 @@
 import React from 'react';
-import HeavyComponent from "./component/HeavyComponent";
+import {useDispatch, useSelector} from "react-redux";
 
 function App(props) {
 
+    const counter = useSelector((state) => {
+        return state.counter;
+    });
+    const counter2 = useSelector((state) => {
+        return state.counter2;
+    });
+
+    const dispatch = useDispatch()
     return (
         <>
-        <nav style={{
-            backgroundColor: "yellow",
-            marginBottom: "10px"
-        }}>
-            내비게이션 바
-        </nav>
-            <HeavyComponent>
-
-            </HeavyComponent>
-
-        <footer style={{
-            backgroundColor: "green",
-            marginBottom: "10px"
-        }}>
-            푸터 영역이에요
-        </footer>
+         <div>
+             현재 카운트: {counter.number}
+             현재 카운트: {counter2.number}
+         </div>
+            <button onClick={ () => {
+                dispatch({
+                    type :"PLUS"
+                })
+            }}>+</button>
+            <button onClick={ () => {
+                dispatch({
+                    type : "MINUS"
+                })
+            }}>-</button>
         </>
+
+
     );
 }
 
