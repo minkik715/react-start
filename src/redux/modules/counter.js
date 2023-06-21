@@ -1,29 +1,29 @@
-export const PLUS_ONE = "PLUS_ONE"
-export const MINUS_ONE = "MINUS_ONE"
-export const PLUS_N = "PLUS_N"
-export const MINUS_N = "MINUS_N"
+const PLUS_ONE = "PLUS_ONE"
+const MINUS_ONE = "MINUS_ONE"
+const PLUS_N = "PLUS_N"
+const MINUS_N = "MINUS_N"
 
 export const plusOne = () => {
-    return{
+    return {
         type: PLUS_ONE
     }
 }
 
 export const minusOne = () => {
-    return{
+    return {
         type: MINUS_ONE
     }
 }
 
 export const plusN = (n) => {
-    return{
+    return {
         type: PLUS_N,
         payload: n
     }
 }
 
 export const minusN = (n) => {
-    return{
+    return {
         type: MINUS_N,
         payload: n
     }
@@ -37,11 +37,11 @@ const counter = (state = initialState, action) => {
     switch (action.type) {
         case PLUS_ONE:
             return {
-                number: state.number +1
+                number: state.number + 1
             }
         case MINUS_ONE:
             return {
-                number: state.number -1
+                number: state.number - 1
             }
         case PLUS_N:
             return {
